@@ -27,7 +27,6 @@ header {
 .top-header {
     display: flex;
     flex-direction: column;
-    align-items: left;
     gap: 1em;
     justify-content: space-between;
     padding: 3em 2em;
@@ -38,22 +37,42 @@ header {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr auto;
-    border: 2px solid grey;
-    border-radius: 5px;
     grid-row: 2 / 4;
     z-index: 1;
     grid-column: 1;
 }
 
-.search input[type="text"] {
-    background-color: #2E2E2F;
-    border: none;
-    margin: 0;
-}
-
 .search button {
     border: none;
-    padding: 0.5em 2em;
+    padding: 0.75em 3em;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #4B4B4B;
+    color: white;
+}
+
+.search-input {
+    position: relative;
+    display: flex;
+}
+
+.search-input i {
+    position: absolute;
+    left: 0.5em;
+    top: 25%;
+    color: grey;
+}
+
+.search-input input[type="text"] {
+    background-color: #2E2E2F;
+    border: none;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin: 0;
+    padding-left: calc(0.5em + 30px);
+    color: grey;
+    font-size: .875rem;
 }
 
 main {
@@ -61,6 +80,13 @@ main {
     color: #2E2E2F;
     grid-row: 3 / 5;
     grid-column: 1;
+}
+
+.blank, #empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* typography */
@@ -97,7 +123,7 @@ h1 h2 h3 h4 {
     margin: 0;
 }
 
-i {
+main i {
     font-size: 5rem;
 }
 
@@ -119,6 +145,6 @@ main p {
     .top-header {
         padding: 5em 3em;
         flex-direction: row;
-        align-items: center;
+        align-items: flex-end;
     }
 }
