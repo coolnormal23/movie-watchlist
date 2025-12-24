@@ -1,3 +1,5 @@
+/* general */
+
 html, body {
     margin: 0;
     padding: 0;
@@ -10,6 +12,8 @@ body {
     width: 100vw;
     height: 100vh;
 }
+
+/* header */
 
 header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./img/header-bg.jpg");
@@ -31,6 +35,8 @@ header {
     justify-content: space-between;
     padding: 3em 2em;
 }
+
+/* search bar */
 
 .search {
     width: 80vw;
@@ -75,6 +81,8 @@ header {
     font-size: .875rem;
 }
 
+/* main */
+
 main {
     background-color: #121212;
     color: #2E2E2F;
@@ -87,6 +95,43 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#results {
+    width: 80vw;
+    margin: 0 auto;
+}
+
+#seemore {
+    text-align: center;
+    color: grey;
+}
+
+.movie {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid grey;
+    color: whitesmoke;
+    gap: 1em;
+}
+
+.movie i {
+    font-size: 1em;
+}
+
+.poster {
+    height: 20vh;
+}
+
+/* utility */
+
+.flexcenter {
+    display: flex;
+    align-items: center;
+}
+
+.column {
+    flex-direction: column;
 }
 
 /* typography */
@@ -102,7 +147,7 @@ header h4 {
 
 header h1,
 header h4,
-main p {
+#empty p {
     font-weight: 800;
 }
 

@@ -15,17 +15,21 @@
                 <h4><a href="watchlist.html">My Watchlist</a></h4>
             </div>
         </header>
-        <form class="search">
+        <form id="moviesearch" class="search">
             <div class="search-input">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="text-field"/ >
+                <input type="text" id="text-field" placeholder="Fargo"/ >
             </div>
             <button type="submit">Search</button>
         </form>
-        <main class="blank">
-            <div id="empty">
+        <main id="main" class="blank">
+            <!-- <div id="empty">
                 <i class="fa-solid fa-clapperboard"></i>
                 <p>Start exploring</p>
+            </div> -->
+            <div id="results">
+                <div></div>
+                <p id="seemore" role="button">See more...</p>
             </div>
         </main>
         <script src="index.js"></script>
