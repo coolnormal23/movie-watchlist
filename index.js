@@ -29,12 +29,14 @@ async function renderMovies(){
         results.style.display = 'block'
         seemore.style.display = 'block'
 
-        //render movie
+        
         console.log(`movie ${i} =`,movieData)
+        const img = await doesImageExist(movieData.Poster)
+        //render movie
         html += `
             <div class="movie">
                 <div class="posterdiv flex center">
-                    <img class="poster" src="${movieData.Poster}"></img>
+                    <img class="poster" src="${img}"></img>
                 </div>
                 <div class="infodiv">
                     <div class="flex center">
@@ -57,6 +59,17 @@ async function renderMovies(){
     }
     //push to dom
     results.children[0].innerHTML += html
+}
+
+async function doesImageExist(url){
+    try {
+        const response = await fetch(url)
+        console.log('doesimageexist: ',response)
+        return response.ok ? url : '/img/noposter.webp'
+    } catch(e) {
+        console.log(e)
+        return '/img/noposter.webp'
+    }
 }
 
 async function searchMovieByID(id){
