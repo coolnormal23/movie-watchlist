@@ -1,4 +1,4 @@
-export default async function renderMovies(movies){
+export default async function renderMovies(movies, add){
     let html = ''
     for(let i = 0; i < movies.length; i++){
         const movieData = movies[i]
@@ -20,8 +20,7 @@ export default async function renderMovies(movies){
                         <p>${movieData.Runtime}</p>
                         <p>${movieData.Genre}</p>
                         <div role="button" class="flex center" data-movie="${movieData.imdbID}">
-                            <i class="fa-regular fa-square-plus"></i>
-                            <p>Watchlist</p>
+                            ${add ? '<i class="fa-regular fa-square-plus"></i><p>Watchlist</p>' : '<i class="fa-solid fa-circle-minus"></i><p>Remove</p>'}
                         </div>
                     </div>
                     <p class="description">${movieData.Plot}</p>

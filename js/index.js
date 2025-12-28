@@ -1,12 +1,10 @@
 //Author: Jakob Edgeworth (github:coolnormal23)
 import renderMovies from "./modules/renderMovies.mjs"
+import { main, emptyDiv, results } from "./modules/elements.mjs"
 
 //html els
 const form = document.forms[0]
-const main = document.getElementById('main')
-const emptyDiv = document.getElementById('empty')
 const seemore = document.getElementById('seemore')
-const results = document.getElementById('results')
 const noresults = document.getElementById('no-results')
 
 let searchState = [] //search results
@@ -63,7 +61,7 @@ async function seeMore(){
         const movieID = searchState[i].imdbID
         movies.push(await searchMovieByID(movieID))
     }
-    results.children[0].innerHTML += await renderMovies(movies)
+    results.children[0].innerHTML += await renderMovies(movies, true)
 }
 
 // Event listeners and handlers
@@ -79,16 +77,24 @@ async function handleSearchSubmit(e){
     }
 }
 
-async function handleAddWishlist(e){
+async function handleAddWatchlist(e){
     const el = e.target.closest('[data-movie]')
     if(el){
-        localStorage.setItem(el.dataset.movie, JSON.stringify(await searchMovieByID(el.dataset.movie)))
-        console.log('Added to wishlist')
+        let movies = []
+        movies.push(await searchMovieByID(el.dataset.movie))
+        const moviesStorage = localStorage.getItem('movies')
+
+        if(moviesStorage){
+            movies = JSON.parse(moviesStorage).concat(movies)
+        }
+
+        localStorage.setItem('movies',JSON.stringify(movies))
+        console.log('Added to wishlist', localStorage)
     }
 }
 
 form.addEventListener('submit', handleSearchSubmit)
 seemore.addEventListener('click', handleSeeMore)
-results.addEventListener('click', handleAddWishlist)
+results.addEventListener('click', handleAddWatchlist)
 
 console.log(localStorage)

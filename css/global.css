@@ -1,0 +1,198 @@
+/* general */
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* header */
+
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/header-bg.webp");
+    background-size: cover;
+    background-position: 0 60%;
+    background-color: black;
+    color: whitesmoke;
+    mix-blend-mode: difference;
+    text-shadow: 1px 1px #2E2E2F;
+    grid-column: 1;
+}
+
+.top-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: space-between;
+    padding: 3em 2em;
+}
+
+/* main */
+
+main {
+    background-color: #121212;
+    color: #2E2E2F;
+    grid-column: 1;
+    overflow: scroll;
+}
+
+#results {
+    width: 80vw;
+    margin: 0 auto;
+    display: none;
+}
+
+.blank, #empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* movie divs */
+
+.movie {
+    border-bottom: 1px solid grey;
+    color: whitesmoke;
+    gap: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 1em 0;
+}
+
+.infodiv {
+    grid-column: 2 / 6;
+    /* display: grid;
+    grid-template-rows: auto auto 1fr; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 0.75rem;
+}
+
+.infodiv p {
+    margin: 0.25em;
+}
+
+.posterdiv {
+    grid-column: 1 / 2;
+}
+
+.poster {
+    height: 21vh;
+}
+
+#title {
+    font-size: 1.5em;
+}
+
+.star {
+    margin-top: 1px;
+    color: #FEC654;
+}
+
+.description,
+#no-results {
+    color: grey;
+}
+
+#no-results {
+    display: none;
+}
+
+/* utility */
+
+.flex {
+    display: flex;
+}
+
+.center {
+    align-items: center;
+}
+
+.column {
+    flex-direction: column;
+}
+
+/* typography */
+
+body {
+    font-family: "Inter", Helvetica, sans-serif;
+}
+
+header h1,
+header h4 {
+    margin: 0;
+}
+
+header h1,
+header h4,
+#empty p,
+#no-results p {
+    font-weight: 800;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+header h4 {
+    font-size: 1rem;
+}
+
+header a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+h1 h2 h3 h4 {
+    margin: 0;
+}
+
+main i {
+    font-size: 5rem;
+}
+
+.movie i {
+    font-size: 1em;
+}
+
+#seemore p,
+#empty p,
+#no-results p {
+    font-size: 1.125rem;
+}
+
+/* media */
+
+@media (min-width: 500px) {
+    header h1 {
+        font-size: 2.6875rem;
+    }
+
+    header h4 {
+        font-size: 1.25rem;
+    }
+
+    .top-header {
+        padding: 5em 3em;
+        flex-direction: row;
+        align-items: flex-end;
+    }
+
+    .secondaryinfo {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+    }
+
+    .infodiv {
+        font-size: 0.9rem;
+    }
+}

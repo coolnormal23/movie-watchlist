@@ -1,0 +1,7 @@
+body {
+    grid-template-rows: auto 1fr;
+}
+
+main {
+    padding-top: 1em;
+}
