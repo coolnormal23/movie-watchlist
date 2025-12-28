@@ -7,7 +7,7 @@ export default async function renderMovies(movies, add){
         //render movie
         html += `
             <div class="movie">
-                <div class="posterdiv flex aligncenter">
+                <div class="posterdiv flex justifycenter">
                     <img class="poster" src="${img}"></img>
                 </div>
                 <div class="infodiv">
