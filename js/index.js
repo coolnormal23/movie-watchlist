@@ -13,6 +13,7 @@ let searchState = [] //search results
 let i = 0 //track what movie we are on
 const resultsToShow = 3 //how many results should show at a time (so i can save api calls)
 
+// Functions
 async function searchMoviesByName(title){
     const url = `http://www.omdbapi.com/?apikey=1845bac2&type=movie&s=${title}`;
     const options = {method: 'GET'};
@@ -65,17 +66,29 @@ async function seeMore(){
     results.children[0].innerHTML += await renderMovies(movies)
 }
 
+// Event listeners and handlers
 async function handleSeeMore(e){
     await seeMore()
 }
 
-function handleSearchSubmit(e){
+async function handleSearchSubmit(e){
     e.preventDefault()
     if(form[0].value){
         i = 0 //reset movie counter back to 0
-        searchMoviesByName(form[0].value.trimEnd().replaceAll(' ','+'))
+        await searchMoviesByName(form[0].value.trimEnd().replaceAll(' ','+'))
+    }
+}
+
+async function handleAddWishlist(e){
+    const el = e.target.closest('[data-movie]')
+    if(el){
+        localStorage.setItem(el.dataset.movie, JSON.stringify(await searchMovieByID(el.dataset.movie)))
+        console.log('Added to wishlist')
     }
 }
 
 form.addEventListener('submit', handleSearchSubmit)
 seemore.addEventListener('click', handleSeeMore)
+results.addEventListener('click', handleAddWishlist)
+
+console.log(localStorage)

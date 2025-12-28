@@ -19,7 +19,7 @@ export default async function renderMovies(movies){
                     <div class="secondaryinfo">
                         <p>${movieData.Runtime}</p>
                         <p>${movieData.Genre}</p>
-                        <div role="button" class="flex center">
+                        <div role="button" class="flex center" data-movie="${movieData.imdbID}">
                             <i class="fa-regular fa-square-plus"></i>
                             <p>Watchlist</p>
                         </div>
