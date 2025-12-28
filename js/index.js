@@ -74,6 +74,7 @@ async function handleSearchSubmit(e){
     if(form[0].value){
         i = 0 //reset movie counter back to 0
         await searchMoviesByName(form[0].value.trimEnd().replaceAll(' ','+'))
+        form[0].value = '' //reset search value
     }
 }
 
@@ -81,15 +82,26 @@ async function handleAddWatchlist(e){
     const el = e.target.closest('[data-movie]')
     if(el){
         let movies = []
-        movies.push(await searchMovieByID(el.dataset.movie))
         const moviesStorage = localStorage.getItem('movies')
 
         if(moviesStorage){
-            movies = JSON.parse(moviesStorage).concat(movies)
+            const moviesStorageJSON = JSON.parse(moviesStorage)
+            if(moviesStorageJSON.find(movie => movie.imdbID == el.dataset.movie)) {
+                /*
+                    prevent duplicate movie additions, since there is a timeout
+                    if movie is in moviestorage, but user clicked, don't add another one
+                */
+                return
+            }
+            movies.push(await searchMovieByID(el.dataset.movie))
+            movies = moviesStorageJSON.concat(movies)
         }
 
         localStorage.setItem('movies',JSON.stringify(movies))
         console.log('Added to wishlist', localStorage)
+        el.innerHTML = `<p style="color: lime; font-weight:bold;">Added!</p>`
+        el.classList.remove('moviebutton')
+        setTimeout(() => el.style.display = 'none', 3000)
     }
 }
 

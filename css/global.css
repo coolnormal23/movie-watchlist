@@ -76,6 +76,15 @@ main {
     font-size: 0.75rem;
 }
 
+.moviebutton:hover {
+    color: cyan;
+    cursor: pointer;
+}
+
+.moviebutton:active {
+    font-weight: bold;
+}
+
 .infodiv p {
     margin: 0.25em;
 }

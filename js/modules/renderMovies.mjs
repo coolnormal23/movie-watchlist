@@ -19,9 +19,7 @@ export default async function renderMovies(movies, add){
                     <div class="secondaryinfo">
                         <p>${movieData.Runtime}</p>
                         <p>${movieData.Genre}</p>
-                        <div role="button" class="flex center" data-movie="${movieData.imdbID}">
-                            ${add ? '<i class="fa-regular fa-square-plus"></i><p>Watchlist</p>' : '<i class="fa-solid fa-circle-minus"></i><p>Remove</p>'}
-                        </div>
+                        ${movieInWatchlist(movieData, add)}
                     </div>
                     <p class="description">${movieData.Plot}</p>
                 </div>
@@ -40,5 +38,29 @@ async function doesImageExist(url){
     } catch(e) {
         console.log(e)
         return '/img/noposter.webp'
+    }
+}
+
+function movieInWatchlist(movieData, add){
+    if(add){
+        const movieStorage = localStorage.getItem('movies')
+        if(movieStorage){
+            const movieStorageJSON = JSON.parse(movieStorage)
+            if(movieStorageJSON.find(movie => movie.imdbID == movieData.imdbID)){
+                return ''
+            }
+        }
+
+        return `
+            <div role="button" class="flex center moviebutton" data-movie="${movieData.imdbID}">
+                ${'<i class="fa-regular fa-square-plus"></i><p>Watchlist</p>'}
+            </div>
+        `
+    } else {
+        return `
+            <div role="button" class="flex center moviebutton" data-movie="${movieData.imdbID}">
+                ${'<i class="fa-solid fa-circle-minus"></i><p>Remove</p>'}
+            </div>
+        `
     }
 }
