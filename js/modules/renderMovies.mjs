@@ -1,0 +1,45 @@
+export default async function renderMovies(movies){
+    let html = ''
+    for(let i = 0; i < movies.length; i++){
+        const movieData = movies[i]
+        console.log(`movie ${i} =`,movieData)
+        const img = await doesImageExist(movieData.Poster)
+        //render movie
+        html += `
+            <div class="movie">
+                <div class="posterdiv flex center">
+                    <img class="poster" src="${img}"></img>
+                </div>
+                <div class="infodiv">
+                    <div class="flex center">
+                        <p id="title">${movieData.Title}</p>
+                        <i class="fa-solid fa-star star"></i>
+                        <p>${movieData.imdbRating}</p>
+                    </div>
+                    <div class="secondaryinfo">
+                        <p>${movieData.Runtime}</p>
+                        <p>${movieData.Genre}</p>
+                        <div role="button" class="flex center">
+                            <i class="fa-regular fa-square-plus"></i>
+                            <p>Watchlist</p>
+                        </div>
+                    </div>
+                    <p class="description">${movieData.Plot}</p>
+                </div>
+            </div>
+        `
+    }
+    return html
+}
+
+//helper functions
+async function doesImageExist(url){
+    try {
+        const response = await fetch(url)
+        console.log('doesimageexist: ',response)
+        return response.ok ? url : '/img/noposter.webp'
+    } catch(e) {
+        console.log(e)
+        return '/img/noposter.webp'
+    }
+}
