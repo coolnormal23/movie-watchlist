@@ -48,6 +48,15 @@ main {
     display: none;
 }
 
+#seemore:hover {
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+#seemore:active {
+    font-weight: bold;
+}
+
 .blank, #empty {
     display: flex;
     flex-direction: column;
@@ -68,8 +77,6 @@ main {
 
 .infodiv {
     grid-column: 2 / 6;
-    /* display: grid;
-    grid-template-rows: auto auto 1fr; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -115,14 +122,30 @@ main {
     display: none;
 }
 
+/* footer */
+
+footer {
+    background-color: #4B4B4B;
+    color: whitesmoke;
+    justify-content: center;
+}
+
+footer a {
+    color: cyan;
+}
+
 /* utility */
 
 .flex {
     display: flex;
 }
 
-.center {
+.aligncenter {
     align-items: center;
+}
+
+.justifycenter {
+    justify-content: center;
 }
 
 .column {

@@ -1,5 +1,5 @@
 body {
-    grid-template-rows: auto 1em auto 1fr;
+    grid-template-rows: auto 1em auto 1fr auto;
 }
 
 header {
