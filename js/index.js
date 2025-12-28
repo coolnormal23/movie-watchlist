@@ -13,7 +13,7 @@ const resultsToShow = 3 //how many results should show at a time (so i can save 
 
 // Functions
 async function searchMoviesByName(title){
-    const url = `http://www.omdbapi.com/?apikey=1845bac2&type=movie&s=${title}`;
+    const url = `https://www.omdbapi.com/?apikey=1845bac2&type=movie&s=${title}`;
     const options = {method: 'GET'};
 
     try {
@@ -42,7 +42,7 @@ async function searchMoviesByName(title){
 }
 
 async function searchMovieByID(id){
-    const url = `http://www.omdbapi.com/?apikey=1845bac2&i=${id}`;
+    const url = `https://www.omdbapi.com/?apikey=1845bac2&i=${id}`;
     const options = {method: 'GET'};
 
     try {
