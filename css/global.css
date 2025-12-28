@@ -39,7 +39,7 @@ main {
     background-color: #121212;
     color: #2E2E2F;
     grid-column: 1;
-    overflow: scroll;
+    overflow: auto;
 }
 
 #results {
